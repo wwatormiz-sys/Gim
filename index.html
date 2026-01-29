@@ -125,3 +125,166 @@
   </div>
 
 </body>
+:root {
+  --white:     #ffffff;
+  --gull-grey: #a8abae;
+  --fiord:     #405566;
+  --red-berry: #732727;
+  --tall-poppy: #b32d29;
+  --shadow-black: hsla(0, 0%, 0%, 0.75);
+  --shadow-grey: hsla(210, 4%, 67%, 0.5);
+  --spacing-none: 0;
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 40px;
+  --spacing-3xl: 48px;
+  --spacing-4xl: 56px;
+  --spacing-5xl: 64px;
+  --card-width: 32.5rem;
+  --img-height: 13rem;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.body-grid {
+  display: grid;
+  justify-content: center;
+  margin: 5vh 0;
+  min-height: 80vh;
+}
+
+.bg-img {
+  background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/269005/moss.jpg);
+  object-fit: cover;
+}
+
+.card-grid {
+  display: grid;
+  grid-template: max-content
+                 / var(--card-width) var(--card-width);
+  grid-column-gap: var(--spacing-lg);
+}
+
+/* Custom utility classes */
+.font-fira {
+  font-family: 'Fira Sans', sans-serif;
+}
+
+.font-fira-condensed {
+  font-family: 'Fira Sans Condensed', sans-serif;
+}
+
+.tracking-extra-wide {
+  letter-spacing: 0.25rem;
+}
+
+.bg-shadow-black {
+  background-color: var(--shadow-black);
+}
+
+.bg-fiord {
+  background-color: var(--fiord);
+}
+
+.bg-red-berry {
+  background-color: var(--red-berry);
+}
+
+.text-gull-grey {
+  color: var(--gull-grey);
+}
+
+.text-tall-poppy {
+  color: var(--tall-poppy);
+}
+
+.border-gull-grey {
+  border-color: var(--gull-grey);
+}
+
+.border-shadow-grey {
+  border-color: var(--shadow-grey);
+}
+
+.list-disc {
+  list-style: disc;
+}
+
+.w-card {
+  width: var(--card-width);
+}
+
+.h-img {
+  height: var(--img-height);
+}
+
+.obj-fit-cover {
+  object-fit: cover;
+}
+
+.obj-fit-center-top {
+  object-position: 50% 0;
+}
+
+@keyframes '✨' {
+    0%   { background: rgba(255, 255, 255, 1); }
+    100% { background: rgba(255, 255, 255, 0); }
+}
+
+@keyframes '◻️' {
+  0%, 100% { box-shadow: 0 0 10px 5px var(--white); }
+  50% { box-shadow: 0 0 8px 0 var(--white); }
+}
+
+.hover\:effect:hover::before {
+  content: '';
+  border: 0 solid transparent;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* @keyframes duration | timing-function | delay | 
+iteration-count | direction | fill-mode | play-state | name */
+  animation:
+    700ms ease-out 1 normal both ✨,
+    2100ms ease-out infinite normal both ◻️;
+}
+
+.perspective-left {
+  transition: all 700ms ease-out;
+  perspective-origin: right center;
+}
+
+.perspective-left:hover {
+  transform: perspective(100rem) rotateY(7deg) scale(1.03);
+}
+
+.perspective-left:hover + .perspective-right {
+  transform: perspective(100rem) rotateY(-7deg) scale(0.97)
+}
+
+.perspective-right {
+  transition: all 700ms ease;
+  perspective-origin: left center;
+}
+
+.perspective-right:hover {
+  transform: perspective(100rem) rotateY(-7deg) scale(1.03);
+}
+
+/* ⚠️ Can't select previous element, has to use JS ⚠️ */
+.shrink-first-perspective {
+  transform: perspective(100rem) rotateY(7deg) scale(0.97);
+}
