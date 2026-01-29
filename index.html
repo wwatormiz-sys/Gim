@@ -288,3 +288,16 @@ iteration-count | direction | fill-mode | play-state | name */
 .shrink-first-perspective {
   transform: perspective(100rem) rotateY(7deg) scale(0.97);
 }
+window.addEventListener('load', function () {
+  const firstCardEl = document.querySelector('.js-first-card');
+  const secondCardEl = document.querySelector('.js-second-card');
+ 
+  secondCardEl.addEventListener('mouseenter', () => {
+    firstCardEl.classList.add('shrink-first-perspective');
+  });
+
+  secondCardEl.addEventListener('mouseleave', () => {
+    firstCardEl.classList.remove('shrink-first-perspective');
+  });
+  
+}, false);
